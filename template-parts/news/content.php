@@ -22,6 +22,6 @@
 	</div><!--.entry-content-->
 
 	<?php if ( ! is_singular() ) :?>
-		<a href="<?php echo esc_url( get_permalink( get_the_ID() ) ) ?>" class="blue-button read-more"><?php echo esc_html__( 'Read More Test', 'visual-composer-starter' ) ?></a>
+		<a href="<?php echo esc_url( get_permalink( get_the_ID() ) ) ?>" class="blue-button read-more"><?php echo esc_html__( 'ดูเนื้อหาทั้งหมด', 'visual-composer-starter' ) ?></a>
 	<?php endif;?>
 </article><!--.entry-preview-->

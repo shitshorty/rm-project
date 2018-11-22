@@ -28,7 +28,7 @@ while ( have_posts() ) :
 								</div><!--.col-md-2-->
 								<div class="col-md-10">
 									<?php
-									custom_post_single_meta();
+									
 									get_template_part( 'template-parts/news/content', 'single' );
 									
 									/*

@@ -1864,6 +1864,8 @@ function customtype_get_terms( $postID, $term ){
 		foreach( $terms_list as $term ){ $i++;
 			if($i>1){echo ', ';}
 				echo '<a href="' . get_term_link( $term ) . '">'. $term->name .'</a>';
+				
+				
 		}
 	
 }
