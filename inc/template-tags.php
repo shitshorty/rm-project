@@ -189,10 +189,35 @@ if ( ! function_exists( 'visualcomposerstarter_single_meta' ) ) :
 			<?php if ( in_array( get_post_type(), array( 'post', 'attachment' ), true ) ) : ?>
 				<span class="date"><?php visualcomposerstarter_entry_date(); ?></span>
 			<?php endif;?>
-			<?php echo esc_html_x( 'by', 'Post meta', 'visual-composer-starter' ); ?>
-			<?php if ( 'post' === get_post_type() ) : ?>
-				<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><span class="author vcard"><?php echo get_the_author(); ?></span></a>
-			<?php endif; ?>
+			
+			<!--no no more author-->
+			<?php // echo esc_html_x( 'by', 'Post meta', 'visual-composer-starter' ); ?>
+			<?php // if ( 'post' === get_post_type() ) : ?>
+				<!--a href="<?php // echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"--><!--span class="author vcard"--><?php// echo get_the_author(); ?><!--/span--><!--/a-->
+			<?php// endif; ?>
+			
+			<?php echo esc_html_x( 'to', 'Post meta', 'visual-composer-starter' ); ?>
+			<?php the_category( _x( ', ', 'Used between list items, there is a space after the comma.', 'visual-composer-starter' ) ); ?>
+		</div>
+		<?php
+	}
+endif;
+
+/*
+ * Add seperate function post type meta 
+ */
+if ( ! function_exists( 'custom_post_single_meta' ) ) :
+	/**
+	 * custom_post Single meta
+	 */
+	function custom_post_single_meta() {
+		?>
+		<div class="entry-meta">
+			<?php echo esc_html_x( 'On', 'Post meta', 'visual-composer-starter' ); ?>
+			<?php if ( in_array( get_post_type(), array( 'post', 'attachment' ), true ) ) : ?>
+				<span class="date"><?php visualcomposerstarter_entry_date(); ?></span>
+			<?php endif;?>
+			
 			<?php echo esc_html_x( 'to', 'Post meta', 'visual-composer-starter' ); ?>
 			<?php the_category( _x( ', ', 'Used between list items, there is a space after the comma.', 'visual-composer-starter' ) ); ?>
 		</div>

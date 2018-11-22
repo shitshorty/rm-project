@@ -1743,3 +1743,109 @@ add_filter( 'woocommerce_show_page_title', 'visualcomposerstarter_woo_hide_page_
 // Move payments after customer details.
 remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 add_action( 'woocommerce_checkout_after_customer_details', 'woocommerce_checkout_payment', 20 );
+
+
+
+/*
+	==========================================
+	 Custom Post Type : News
+	==========================================
+*/
+function news_custom_post_type (){
+	
+	$labels = array(
+		'name' => 'ประชาสัมพันธ์',
+		'singular_name' => 'ประชาสัมพันธ์',
+		'add_new' => 'สร้างใหม่',
+		'all_items' => 'ทั้งหมด',
+		'add_new_item' => 'เพิ่ม',
+		'edit_item' => 'แก้ไข',
+		'new_item' => 'New Item',
+		'view_item' => 'มุมมอง',
+		'search_item' => 'ค้นหาข่าว',
+		'not_found' => 'ไม่พบข่าว',
+		'not_found_in_trash' => 'ไม่พบข่าวในถังขยะ',
+		'parent_item_colon' => 'Parent Item'
+	);
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'has_archive' => true,
+		'publicly_queryable' => true,
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'hierarchical' => false,
+		'supports' => array(
+			'title',
+			'editor',
+			'excerpt',
+			'thumbnail',
+			'revisions',
+		),
+		/*
+			Exclude original post type category
+		*/
+		//'taxonomies' => array('category', 'post_tag'),
+		'menu_position' => 2,
+		'exclude_from_search' => false
+	);
+	register_post_type('news',$args);
+}
+add_action('init','news_custom_post_type');
+
+
+
+function news_custom_taxonomies() {
+	
+	//add new taxonomy hierarchical : Category for News
+	$labels = array(
+		'name' => 'ประเภทข่าว',
+		'singular_name' => 'ประเภทข่าว',
+		'search_items' => 'ค้นหา',
+		'all_items' => 'ทั้งหมด',
+		'parent_item' => 'Parent Type',
+		'parent_item_colon' => 'Parent Type:',
+		'edit_item' => 'แก้ไขประเภทข่าว',
+		'update_item' => 'อัพเดทประเภทข่าว',
+		'add_new_item' => 'เพิ่มประเภทข่าว',
+		'new_item_name' => 'ประเภทข่าวใหม่',
+		'menu_name' => 'ประเภทข่าว'
+	);
+	
+	$args = array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'news-type' )
+	);
+	
+	register_taxonomy('news-type', array('news'), $args);
+	
+	//add new taxonomy NOT hierarchical
+	
+	$labels = array(
+		'name' => 'แท็กข่าว',
+		'singular_name' => 'แท็กข่าว',
+		'search_items' => 'ค้นหาแท็ก',
+		'all_items' => 'ทั้งหมด',
+		'edit_item' => 'แก้ไขป้ายแท็ก',
+		'update_item' => 'อัพเดทป้ายแท็ก',
+		'add_new_item' => 'เพิ่มป้ายแท็ก',
+		'new_item_name' => 'ป้ายแท็กใหม่',
+		'menu_name' => 'ป้ายชื่อข่าว'
+	);
+	
+	$args = array(
+		'labels' => $labels,
+		'rewrite' => array( 'slug' => 'news-tag' ),
+		'hierarchical' => false
+	);
+	
+	register_taxonomy('news-tag', 'news', $args);
+	
+}
+add_action( 'init' , 'news_custom_taxonomies' );
+
