@@ -30,7 +30,15 @@ while ( have_posts() ) :
 									<?php
 									custom_post_single_meta();
 									get_template_part( 'template-parts/news/content', 'single' );
-
+									
+									/*
+									 * Add category link
+									 */
+									echo 'หมวดหมู่: '; customtype_get_terms( $post->ID, 'news-type' ); echo '<br />';
+									/*
+									 * Add tags link
+									 */
+									echo 'ป้าย: '; customtype_get_terms( $post->ID, 'news-tag' );
 									if ( is_singular( 'post' ) ) : ?>
 										<div class="nav-links post-navigation">
 											<div class="row">

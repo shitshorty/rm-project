@@ -1849,3 +1849,21 @@ function news_custom_taxonomies() {
 }
 add_action( 'init' , 'news_custom_taxonomies' );
 
+/*
+	==========================================
+	Custom Term (Post Type) Function
+	==========================================
+*/
+function customtype_get_terms( $postID, $term ){
+	
+	
+	$terms_list = wp_get_post_terms($postID, $term); 				
+		
+
+		$i = 0;
+		foreach( $terms_list as $term ){ $i++;
+			if($i>1){echo ', ';}
+				echo '<a href="' . get_term_link( $term ) . '">'. $term->name .'</a>';
+		}
+	
+}
