@@ -1,7 +1,7 @@
 <?php 
 	
 /*
-	Template Name: News Template
+	Template Name: Video Template
 */
 	
 get_header(); ?>
@@ -13,7 +13,7 @@ get_header(); ?>
 						<?php
 						// Start the loop.
 						while ( have_posts() ) : the_post();
-							get_template_part( 'template-parts/news/content', 'page' );
+							get_template_part( 'template-parts/video/content', 'page' );
 						endwhile; // End the loop.
 						?>
 					</div><!--.main-content-->

@@ -23,13 +23,13 @@ while ( have_posts() ) :
 								<div class="col-md-2">
 									<?php
 									//Disable Author Picture
-										//get_template_part( 'template-parts/news/biography' );
+										//get_template_part( 'template-parts/event/biography' );
 									?>
 								</div><!--.col-md-2-->
 								<div class="col-md-10">
 									<?php
 									
-									get_template_part( 'template-parts/news/content', 'single' );?>
+									get_template_part( 'template-parts/event/content', 'single' );;?>
 									<div class ="entry-meta">
 										<span class ="date"> วันที่: <?php the_date('j/n/Y');?> เวลา: <?php the_time('G:i:s:T'); ?><br /></span></div>
 									<?php
@@ -41,9 +41,7 @@ while ( have_posts() ) :
 									 * Add tags link
 									 */
 									echo 'ป้าย: '; customtype_get_terms( $post->ID, 'news-tag' );
-									
-									print (previous_posts_link('&laquo; Previous')) ;
-									if ( is_singular( 'news' ) ) : ?>
+									if ( is_singular( 'event' ) ) : ?>
 										<div class="nav-links post-navigation">
 											<div class="row">
 												<div class="col-md-5">
@@ -70,6 +68,15 @@ while ( have_posts() ) :
 										</div><!--.nav-links post-navigation-->
 									<?php endif; ?>
 								</div><!--.col-md-10-->
+								<?php
+								/*
+								 *Add custom category
+								 */
+								 $terms_list = wp_get_post_terms($post->ID, 'news');
+										foreach($terms_list as $term){
+											echo $term->name;}
+											?>
+								
 							</div><!--.<?php echo esc_html( visualcomposerstarter_get_maincontent_block_class() ); ?>-->
 							<?php if ( visualcomposerstarter_get_sidebar_class() ) : ?>
 								<?php get_sidebar(); ?>

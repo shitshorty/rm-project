@@ -1787,7 +1787,7 @@ function news_custom_post_type (){
 			Exclude original post type category
 		*/
 		//'taxonomies' => array('category', 'post_tag'),
-		'menu_position' => 2,
+		'menu_position' => 6,
 		'exclude_from_search' => false
 	);
 	register_post_type('news',$args);
@@ -1849,6 +1849,330 @@ function news_custom_taxonomies() {
 }
 add_action( 'init' , 'news_custom_taxonomies' );
 
+
+/*
+	==========================================
+	 Custom Post Type : Event
+	==========================================
+*/
+function event_custom_post_type (){
+	
+	$labels = array(
+		'name' => 'กิจกรรม',
+		'singular_name' => 'กิจกรรม',
+		'add_new' => 'สร้างกิจกรรม',
+		'all_items' => 'ทั้งหมด',
+		'add_new_item' => 'เพิ่ม',
+		'edit_item' => 'แก้ไข',
+		'new_item' => 'New Item',
+		'view_item' => 'มุมมอง',
+		'search_item' => 'ค้นหากิจกรรม',
+		'not_found' => 'ไม่พบกิจกรรม',
+		'not_found_in_trash' => 'ไม่พบโพสต์กิจกรรมในถังขยะ',
+		'parent_item_colon' => 'Parent Item'
+	);
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'has_archive' => true,
+		'publicly_queryable' => true,
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'hierarchical' => false,
+		'supports' => array(
+			'title',
+			'editor',
+			'excerpt',
+			'thumbnail',
+			'revisions',
+		),
+		/*
+			Exclude original post type category
+		*/
+		//'taxonomies' => array('category', 'post_tag'),
+		'menu_position' => 7,
+		'exclude_from_search' => false
+	);
+	register_post_type('event',$args);
+}
+add_action('init','event_custom_post_type');
+
+
+
+function event_custom_taxonomies() {
+	
+	//add new taxonomy hierarchical : Category for Event
+	$labels = array(
+		'name' => 'ประเภทกิจกรรม',
+		'singular_name' => 'ประเภทกิจกรรม',
+		'search_items' => 'ค้นหา',
+		'all_items' => 'กิจกรรมทุกประเภท',
+		'parent_item' => 'กิจกรรมย่อยของ',
+		'parent_item_colon' => 'Parent Type:',
+		'edit_item' => 'แก้ไขประเภท',
+		'update_item' => 'อัพเดทประเภทกิจกรรม',
+		'add_new_item' => 'เพิ่มประเภทกิจกรรม',
+		'new_item_name' => 'ประเภทกิจกรรมใหม่',
+		'menu_name' => 'หมวดกิจกรรม'
+	);
+	
+	$args = array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'event-type' )
+	);
+	
+	register_taxonomy('event-type', array('event'), $args);
+	
+	//add new taxonomy NOT hierarchical
+	
+	$labels = array(
+		'name' => 'แท็กกิจกรรม',
+		'singular_name' => 'แท็กกิจกรรม',
+		'search_items' => 'ค้นหาแท็ก',
+		'all_items' => 'ทั้งหมด',
+		'edit_item' => 'แก้ไขป้ายกิจกรรม',
+		'update_item' => 'อัพเดทป้ายกิจกรรม',
+		'add_new_item' => 'เพิ่มป้ายกิจกรรม',
+		'new_item_name' => 'ป้ายกิจกรรมใหม่',
+		'menu_name' => 'ป้ายกิจกรรม'
+	);
+	
+	$args = array(
+		'labels' => $labels,
+		'rewrite' => array( 'slug' => 'event-tag' ),
+		'hierarchical' => false
+	);
+	
+	register_taxonomy('event-tag', 'event', $args);
+	
+}
+add_action( 'init' , 'event_custom_taxonomies' );
+
+
+
+
+/*
+	==========================================
+	 Custom Post Type : Research
+	==========================================
+*/
+function research_custom_post_type (){
+	
+	$labels = array(
+		'name' => 'งานวิจัย',
+		'singular_name' => 'งานวิจัย',
+		'add_new' => 'สร้างงานวิจัย',
+		'all_items' => 'งานวิจัยทั้งหมด',
+		'add_new_item' => 'เพิ่ม',
+		'edit_item' => 'แก้ไข',
+		'new_item' => 'New Item',
+		'view_item' => 'มุมมอง',
+		'search_item' => 'ค้นหางานวิจัย',
+		'not_found' => 'ไม่พบงานวิจัย',
+		'not_found_in_trash' => 'ไม่พบโพสต์กิจกรรมในถังขยะ',
+		'parent_item_colon' => 'Parent Item'
+	);
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'has_archive' => true,
+		'publicly_queryable' => true,
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'hierarchical' => false,
+		'supports' => array(
+			'title',
+			'editor',
+			'excerpt',
+			'thumbnail',
+			'revisions',
+		),
+		/*
+			Exclude original post type category
+		*/
+		//'taxonomies' => array('category', 'post_tag'),
+		'menu_position' => 8,
+		'exclude_from_search' => false
+	);
+	register_post_type('research',$args);
+}
+add_action('init','research_custom_post_type');
+
+
+
+function research_custom_taxonomies() {
+	
+	//add new taxonomy hierarchical : Category for Research
+	$labels = array(
+		'name' => 'ประเภทงานวิจัย',
+		'singular_name' => 'ประเภทงานวิจัย',
+		'search_items' => 'ค้นหา',
+		'all_items' => 'งานวิจัยทุกประเภท',
+		'parent_item' => 'งานวิจัยย่อยของ',
+		'parent_item_colon' => 'Parent Type:',
+		'edit_item' => 'แก้ไขประเภท',
+		'update_item' => 'อัพเดทประเภทงานวิจัย',
+		'add_new_item' => 'เพิ่มประเภทงานวิจัย',
+		'new_item_name' => 'ประเภทงานวิจัยใหม่',
+		'menu_name' => 'หมวดงานวิจัย'
+	);
+	
+	$args = array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'research-type' )
+	);
+	
+	register_taxonomy('research-type', array('research'), $args);
+	
+	//add new taxonomy NOT hierarchical
+	
+	$labels = array(
+		'name' => 'แท็กงานวิจัย',
+		'singular_name' => 'แท็กงานวิจัย',
+		'search_items' => 'ค้นหาแท็ก',
+		'all_items' => 'ทั้งหมด',
+		'edit_item' => 'แก้ไขป้ายแท็ก',
+		'update_item' => 'อัพเดทป้ายแท็ก',
+		'add_new_item' => 'เพิ่มป้ายแท็ก',
+		'new_item_name' => 'ป้ายแท็กใหม่',
+		'menu_name' => 'ป้ายงานวิจัย'
+	);
+	
+	$args = array(
+		'labels' => $labels,
+		'rewrite' => array( 'slug' => 'research-tag' ),
+		'hierarchical' => false
+	);
+	
+	register_taxonomy('research-tag', 'research', $args);
+	
+}
+add_action( 'init' , 'research_custom_taxonomies' );
+
+
+
+
+
+/*
+	==========================================
+	 Custom Post Type : Videos
+	==========================================
+*/
+function video_custom_post_type (){
+	
+	$labels = array(
+		'name' => 'วีดิโอ',
+		'singular_name' => 'วีดิโอ',
+		'add_new' => 'สร้างวีดิโอ',
+		'all_items' => 'วีดิโอทั้งหมด',
+		'add_new_item' => 'เพิ่ม',
+		'edit_item' => 'แก้ไข',
+		'new_item' => 'New Item',
+		'view_item' => 'มุมมอง',
+		'search_item' => 'ค้นหาวีดิโอ',
+		'not_found' => 'ไม่พบวีดิโอ',
+		'not_found_in_trash' => 'ไม่พบวีดิโอในถังขยะ',
+		'parent_item_colon' => 'Parent Item'
+	);
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'has_archive' => true,
+		'publicly_queryable' => true,
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'hierarchical' => false,
+		'supports' => array(
+			'title',
+			'editor',
+			'excerpt',
+			'thumbnail',
+			'revisions',
+			'post-formats',
+		),
+		/*
+			Exclude original post type category
+		*/
+		//'taxonomies' => array('category', 'post_tag'),
+		'menu_position' => 9,
+		'exclude_from_search' => false
+	);
+	register_post_type('video',$args);
+}
+add_action('init','video_custom_post_type');
+
+
+
+function video_custom_taxonomies() {
+	
+	//add new taxonomy hierarchical : Category for Video
+	$labels = array(
+		'name' => 'ประเภทวีดิโอ',
+		'singular_name' => 'ประเภทวีดิโอ',
+		'search_items' => 'ค้นหา',
+		'all_items' => 'วีดิโอทุกประเภท',
+		'parent_item' => 'หมวดย่อยของ',
+		'parent_item_colon' => 'Parent Type:',
+		'edit_item' => 'แก้ไขประเภท',
+		'update_item' => 'อัพเดทประเภทวีดิโอ',
+		'add_new_item' => 'เพิ่มประเภทวีดิโอ',
+		'new_item_name' => 'ประเภทวีดิโอใหม่',
+		'menu_name' => 'หมวดหมู่วีดิโอ'
+	);
+	
+	$args = array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'video-type' )
+	);
+	
+	register_taxonomy('video-type', array('video'), $args);
+	
+	//add new taxonomy NOT hierarchical
+	
+	$labels = array(
+		'name' => 'แท็กวีดิโอ',
+		'singular_name' => 'แท็กวีดิโอ',
+		'search_items' => 'ค้นหาแท็ก',
+		'all_items' => 'ทั้งหมด',
+		'edit_item' => 'แก้ไขป้ายแท็ก',
+		'update_item' => 'อัพเดทป้ายแท็ก',
+		'add_new_item' => 'เพิ่มป้ายแท็ก',
+		'new_item_name' => 'ป้ายแท็กใหม่',
+		'menu_name' => 'ป้ายวีดิโอ'
+	);
+	
+	$args = array(
+		'labels' => $labels,
+		'rewrite' => array( 'slug' => 'video-tag' ),
+		'hierarchical' => false
+	);
+	
+	register_taxonomy('video-tag', 'video', $args);
+	
+}
+add_action( 'init' , 'video_custom_taxonomies' );
+
+
+
+
+
+
+
 /*
 	==========================================
 	Custom Term (Post Type) Function
@@ -1859,13 +2183,14 @@ function customtype_get_terms( $postID, $term ){
 	
 	$terms_list = wp_get_post_terms($postID, $term); 				
 		
-
+	echo'<div class="entry-tags">';
+		echo'<span class="screen-reader-text"></span>';
 		$i = 0;
 		foreach( $terms_list as $term ){ $i++;
 			if($i>1){echo ', ';}
-				echo '<a href="' . get_term_link( $term ) . '">'. $term->name .'</a>';
+				echo '<a href="' . get_term_link( $term ) . '" rel="tag">'. $term->name .'</a>';
 				
 				
 		}
-	
+	echo'</div>';
 }
