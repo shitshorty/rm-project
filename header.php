@@ -29,11 +29,7 @@
 							if ( has_custom_logo() ) :
 								the_custom_logo();
 							else : ?>
-								<h1>
-									<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-										<?php bloginfo( 'name' ); ?>
-									</a>
-								</h1>
+								
 							<?php endif; ?>
 
 						</div>
