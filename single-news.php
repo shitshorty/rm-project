@@ -41,8 +41,6 @@ while ( have_posts() ) :
 									 * Add tags link
 									 */
 									echo 'ป้าย: '; customtype_get_terms( $post->ID, 'news-tag' );
-									
-									print (previous_posts_link('&laquo; Previous')) ;
 									if ( is_singular( 'news' ) ) : ?>
 										<div class="nav-links post-navigation">
 											<div class="row">
