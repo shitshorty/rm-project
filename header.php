@@ -18,6 +18,11 @@
 </head>
 <body <?php body_class(); ?>>
 <?php if ( visualcomposerstarter_is_the_header_displayed() ) : ?>
+    <header class="vcv-header" data-vcv-layout-zone="header">
+               <?php do_action('vcv:themeEditor:header'); ?>
+           </header>
+       <?php endif; ?>
+   	echo 'test header';
 	<?php visualcomposerstarter_hook_before_header(); ?>
 	<header id="header">
 		<nav class="navbar">
