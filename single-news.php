@@ -36,7 +36,10 @@ while ( have_posts() ) :
 									/*
 									 * Add category link
 									 */
-									echo 'หมวดหมู่: '; customtype_get_terms( $post->ID, 'news-type' ); echo '<br />';
+									//Test varible
+									//echo gettype($post->ID);echo' varible ';echo $post->ID; echo' get the iD ';echo get_the_ID();echo gettype(get_the_ID());
+                                    //echo previous_post_link();
+                                    echo 'หมวดหมู่: '; customtype_get_terms( $post->ID, 'news-type' ); echo '<br />';
 									/*
 									 * Add tags link
 									 */

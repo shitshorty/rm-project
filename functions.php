@@ -2171,28 +2171,88 @@ add_action( 'init' , 'video_custom_taxonomies' );
 
 
 
+/*
+	==========================================
+	Custom Term (Post Type) Function : Use by command function call
+	==========================================
+*/
+function customtype_get_terms( $postID, $term ){
+
+
+    $terms_list = wp_get_post_terms($postID, $term);
+
+    echo'<div class="entry-tags">';
+    echo'<span class="screen-reader-text"></span>';
+    $i = 0;
+    foreach( $terms_list as $term ){ $i++;
+        if($i>1){echo ', ';}
+        echo '<a href="' . get_term_link( $term ) . '" rel="tag">'. $term->name .'</a>';
+    }
+    echo'</div>';
+
+}
+
+
+
 
 
 /*
 	==========================================
-	Custom Term (Post Type) Function
+	Custom Term (Post Type) Function : Print Taxonomy method with Shortcode
 	==========================================
 */
-function customtype_get_terms( $postID, $term ){
-	
-	
-	$terms_list = wp_get_post_terms($postID, $term); 				
-		
-	echo'<div class="entry-tags">';
-		echo'<span class="screen-reader-text"></span>';
-		$i = 0;
-		foreach( $terms_list as $term ){ $i++;
-			if($i>1){echo ', ';}
-				echo '<a href="' . get_term_link( $term ) . '" rel="tag">'. $term->name .'</a>';
-				
-				
-		}
-	echo'</div>';
+function print_taxonomy_link( $postID, $term ){
+
+    /*///////////   Render into HTML5 ////////////////*/
+    $terms_list = wp_get_post_terms($postID, $term);
+    $html_int = '<div class="row"><div class="col-md-12"><div class="entry-tags"><span class="screen-reader-text"></span>';
+
+    $i = 0;
+    $html_loop ='';
+    foreach( $terms_list as $term ){ $i++;
+
+
+        if($i>1){echo ', ';}
+        $html_loop ='<a href="' . get_term_link( $term ) . '" rel="tag">'. $term->name .'</a>';
+
+
+    }
+    $html_end = '</div></div></div>';
+
+
+
+
+    /*///////////   Display into HTML5 ////////////////*/
+
+    $html = $html_int.$html_loop.$html_end;
+
+    return $html;
 }
 
+
+
+
+
+/*
+	==========================================
+	Require File :Shortcode Extension
+	==========================================
+*/
+
 require_once('shortcode.php');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
