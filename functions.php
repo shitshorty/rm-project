@@ -3,8 +3,8 @@
  * Functions
  *
  * @package WordPress
- * @subpackage Visual Composer Starter
- * @since Visual Composer Starter 1.0
+ * @subpackage IDEE EDAY Visual Design
+ * @since RMUTR by IDEE EDAY 1.0
  */
 
 define( 'VISUALCOMPOSERSTARTER_VERSION', '3.0' );
@@ -2194,3 +2194,5 @@ function customtype_get_terms( $postID, $term ){
 		}
 	echo'</div>';
 }
+
+require_once('shortcode.php');

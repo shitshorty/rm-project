@@ -3,8 +3,8 @@
  * Header
  *
  * @package WordPress
- * @subpackage Visual Composer Starter
- * @since Visual Composer Starter 1.0
+ * @subpackage IDEE EDAY Visual Design
+ * @since RMUTR by IDEE EDAY 1.0
  */
 
 ?>

@@ -3,8 +3,8 @@
  * The template part for displaying a message that posts cannot be found
  *
  * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
+ * @subpackage IDEE EDAY Visual Design
+ * @since RMUTR by IDEE EDAY 1.0
  */
 
 ?>
