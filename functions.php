@@ -2207,15 +2207,17 @@ function print_taxonomy_link( $postID, $term ){
     $terms_list = wp_get_post_terms($postID, $term);
     $html_int = '<div class="row"><div class="col-md-12"><div class="entry-tags"><span class="screen-reader-text"></span>';
 
-    $i = 0;
+    $i=0;
     $html_loop ='';
-    foreach( $terms_list as $term ){ $i++;
+    foreach( $terms_list as $term ){
+        if($i>0) {
+            $html_loop .=',';
 
+        }
 
-        if($i>1){echo ', ';}
-        $html_loop ='<a href="' . get_term_link( $term ) . '" rel="tag">'. $term->name .'</a>';
+        $html_loop .='<a href="' . get_term_link( $term ) . '" rel="tag">'. $term->name .'value of '.$i.'</a>';
 
-
+        $i++;
     }
     $html_end = '</div></div></div>';
 
