@@ -80,7 +80,7 @@ function add_pagination_link(){
             .'<span class="meta-nav"></span>'
                 .'<span class="screen-reader-text"></span>'
                     .'<span class="post-title">'
-                        .$previous_post->post_title
+                        .'< '.$previous_post->post_title
                     .'</span></a>'
             .'</div><!--nav-previous-->';
 
@@ -95,7 +95,7 @@ function add_pagination_link(){
             .'<span class="meta-nav"></span>'
                 .'<span class="screen-reader-text"></span>'
                     .'<span class="post-title">'
-                        .$next_post->post_title
+                        .$next_post->post_title.' >'
                     .'</span></a>
          .</div><!--nav-next-->';
 
