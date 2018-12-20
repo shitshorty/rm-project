@@ -2215,7 +2215,7 @@ function print_taxonomy_link( $postID, $term ){
 
         }
 
-        $html_loop .='<a href="' . get_term_link( $term ) . '" rel="tag">'. $term->name .'value of '.$i.'</a>';
+        $html_loop .='<a href="' . get_term_link( $term ) . '" rel="tag">'. $term->name .'</a>';
 
         $i++;
     }
