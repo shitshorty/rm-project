@@ -1535,7 +1535,39 @@ function visualcomposerstarter_inline_styles() {
 	wp_add_inline_style( 'visualcomposerstarter-custom-style', $css );
 }
 add_action( 'wp_enqueue_scripts', 'visualcomposerstarter_inline_styles' );
+/**
+ * Restrict Licence
+ */
 
+function restrict_licence(){
+
+//// Design Division /////////
+//    /*plugins/content-views-query-and-display-post-page/content-views.php   restrict_ct_view()     */
+//    remove_menu_page( 'content-views' );          //
+//
+//    /*plugins/visualcomposer/env.php   restrict_vcv(),restrict_pluginlist()    */
+//    remove_menu_page( 'vcv-settings' );        //
+//
+//    /*plugins/revslider/revslider.php   restrict_revslider()    */
+//    remove_menu_page( 'revslider' );        //
+
+
+
+//// Restricted Plug-in ///////
+    //remove_menu_page( 'wpseo_dashboard' );
+
+//// Admin Sub Menu Option ////
+    remove_submenu_page( 'options-general.php','login-security-solution' );
+    //remove_submenu_page( 'options-general.php','relevanssi/relevanssi.php' );
+    //remove_submenu_page( 'options-general.php','settings-user-role-editor.php' );
+
+//// Security Division ////////
+
+    remove_menu_page( 'bulletproof-security/admin/core/core.php' );
+    remove_menu_page( 'Wordfence' );
+
+}
+add_action( 'admin_menu', 'restrict_licence' );
 /**
  * Include the TGM_Plugin_Activation class.
  */
@@ -2372,6 +2404,12 @@ function rd_duplicate_post_link( $actions, $post ) {
 //add_filter( 'post_row_actions', 'rd_duplicate_post_link', 10, 2 );
 
 //add_filter('page_row_actions', 'rd_duplicate_post_link', 10, 2);
+
+
+
+
+
+
 
 
 
