@@ -66,6 +66,19 @@ function add_pagination_link(){
              //return 0;
         //return $previous_post->post_title;
 
+    //test filter by category
+
+        $current_post = get_post();
+
+
+        echo 'Print current post ID : '.$current_post->ID.'Data type is : '.gettype($current_post->ID);
+
+
+
+
+
+
+
         /*///////////   Render into HTML5 ////////////////*/
 
 

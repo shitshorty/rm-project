@@ -99,7 +99,7 @@ if ( visualcomposerstarter_is_the_footer_displayed() ) : ?>
 					<p class="copyright">
 						<span>
 							<?php /* translators: 1. link opening tag, 2. link opening tag, 3. link closing tag */
-							printf( esc_html__( 'Proudly powered by %1$sIDEE-EDAY Co.,Ltd.%3$s and %2$sWordPress%3$s', 'visual-composer-starter' ), '<a href="http://www.idee-eday.co.th" target="_blank">', '<a href="https://wordpress.org" target="_blank">', '</a>' ); ?></span>
+							printf( esc_html__( 'Proudly powered by %1$sIDEE-EDAY Design Team%3$s and %2$sWordPress%3$s', 'visual-composer-starter' ), '<a href="http://www.idee-eday.co.th" target="_blank">', '<a href="https://wordpress.org" target="_blank">', '</a>' ); ?></span>
 					</p>
 					<?php if ( has_nav_menu( 'secondary' ) ) : ?>
 						<div class="footer-menu">

@@ -36,11 +36,11 @@ while ( have_posts() ) :
 									/*
 									 * Add category link
 									 */
-									echo 'หมวดหมู่: '; customtype_get_terms( $post->ID, 'news-type' ); echo '<br />';
+									echo 'หมวดหมู่: '; customtype_get_terms( $post->ID, 'event-type' ); echo '<br />';
 									/*
 									 * Add tags link
 									 */
-									echo 'ป้าย: '; customtype_get_terms( $post->ID, 'news-tag' );
+									echo 'ป้าย: '; customtype_get_terms( $post->ID, 'event-tag' );
 									if ( is_singular( 'event' ) ) : ?>
 										<div class="nav-links post-navigation">
 											<div class="row">
@@ -68,16 +68,7 @@ while ( have_posts() ) :
 										</div><!--.nav-links post-navigation-->
 									<?php endif; ?>
 								</div><!--.col-md-10-->
-								<?php
-								/*
-								 *Add custom category
-								 */
-								 $terms_list = wp_get_post_terms($post->ID, 'news');
-										foreach($terms_list as $term){
-											echo $term->name;}
-											?>
-								
-							</div><!--.<?php echo esc_html( visualcomposerstarter_get_maincontent_block_class() ); ?>-->
+                            </div><!--.<?php echo esc_html( visualcomposerstarter_get_maincontent_block_class() ); ?>-->
 							<?php if ( visualcomposerstarter_get_sidebar_class() ) : ?>
 								<?php get_sidebar(); ?>
 							<?php endif; ?>
