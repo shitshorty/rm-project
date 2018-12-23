@@ -49,32 +49,74 @@ add_shortcode( 'TaxonomyLink','add_category_link' );
 /**
  * @return string
  */
-function add_pagination_link(){
+function add_pagination_link($args){
 
         //echo'sadas';
+        $attributes = shortcode_atts(
 
-        $previous_post = get_previous_post();
-        $next_post = get_next_post();
-        //$post_language_information = wpml_get_language_information($next_post->ID);
-        //$post_language_information;
-        //foreach ($post_language_information as $postss) {
-         //   echo $postss;
+        array(
+            'filter' => false,
+            'exclude' => '',
+            'taxonomy' => ''
 
-        //}
+        ),$args
+        );
 
-        //if (empty ($previous_post))
-             //return 0;
-        //return $previous_post->post_title;
+        if ($attributes['filter']!= true) {
+            $previous_post = get_previous_post();
+            $next_post = get_next_post();
+        }else {
+            $previous_post = get_previous_post($attributes['filter'],$attributes['exclude'],$attributes['taxonomy']);
+            $next_post = get_next_post($attributes['filter'],$attributes['exclude'],$attributes['taxonomy']);
+        }
 
-    //test filter by category
-
-        $current_post = get_post();
-
-
-        echo 'Print current post ID : '.$current_post->ID.'Data type is : '.gettype($current_post->ID);
-
+        ///////test case WPML///////
 
 
+//        $post_language_information = wpml_get_language_information($next_post->ID);
+//        $post_language_information;
+//        foreach ($post_language_information as $postss) {
+//
+//        }   echo $postss;
+//
+//        }
+
+
+    ///////returner of post title///////
+
+
+//        if (empty ($previous_post))
+//             return 0;
+//        return $previous_post->post_title;
+
+
+
+    ////////test filter by category////////
+
+    ///Declare current post ID
+
+//    $current_post = get_post();
+//    ////////Method 1  finding category ID by wp_term
+
+////    $terms_list = wp_get_post_terms($current_post->ID, 'news-type');
+////    foreach( $terms_list as $term ){
+////        echo 'EXTRACT'.$term->term_id;
+////    }
+////
+
+//    ////////Method 2  finding category ID by wp_term    : Fail Solution!!!!
+        //$category_list = wp_get_post_categories($current_post->ID );
+            //echo 'hello'.var_dump($category_list);
+
+
+        //echo 'Print current post ID : '.$current_post->ID.'Data type is : '.gettype($current_post->ID);
+
+
+
+    ///////Explore   get_previous_post attribute
+
+//    $previous_post_more = get_previous_post(true,'','news-type');
+//    echo $previous_post_more->post_title;
 
 
 
