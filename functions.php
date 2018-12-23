@@ -1554,22 +1554,7 @@ function restrict_licence(){
 
 }
 add_action( 'admin_menu', 'restrict_licence' );
-function restrict_pluginlist() {
-    global $wp_list_table;
-    $hidearr = array('bulletproof-security/bulletproof-security.php',
-        'content-views-query-and-display-post-page/content-views.php',
-        'pt-content-views-pro/content-views.php',
-        'revslider/revslider.php',
-        'visualcomposer/plugin-wordpress.php'
-    );
-    $myplugins = $wp_list_table->items;
-    foreach ($myplugins as $key => $val) {
-        if (in_array($key,$hidearr)) {
-            unset($wp_list_table->items[$key]);
-        }
-    }
-}
-add_action('pre_current_active_plugins', 'restrict_pluginlist');
+
 /**
  * Include the TGM_Plugin_Activation class.
  */
