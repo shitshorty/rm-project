@@ -386,7 +386,7 @@ function visualcomposerstarter_style() {
 	wp_enqueue_style( 'visualcomposerstarter-woocommerce' );
 	wp_enqueue_style( 'visualcomposerstarter-responsive' );
 	wp_enqueue_style( 'visualcomposerstarter-style' );
-	//wp_enqueue_style( 'visualcomposerstarter-fonts' );
+	wp_enqueue_style( 'visualcomposerstarter-fonts' );
 }
 add_action( 'wp_enqueue_scripts', 'visualcomposerstarter_style' );
 
@@ -1470,10 +1470,10 @@ function visualcomposerstarter_inline_styles() {
 	.visualcomposerstarter.woocommerce div.product .woocommerce-tabs ul.tabs li a:hover,
 	.visualcomposerstarter.woocommerce div.product .entry-categories a:focus,
 	.visualcomposerstarter.woocommerce-cart .woocommerce table.cart .product-name a:focus,
-	/*.visualcomposerstarter.woocommerce div.product .woocommerce-tabs ul.tabs li a:focus,
+	.visualcomposerstarter.woocommerce div.product .woocommerce-tabs ul.tabs li a:focus,
 	{
 		color: ' . esc_html( $link_hover_color ) . ';
-	}*/
+	}
 	';
 
 	$link_active_color = get_theme_mod( 'woo_link_active_color', '#2b4b80' );
