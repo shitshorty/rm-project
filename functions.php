@@ -2399,13 +2399,24 @@ function rd_duplicate_post_link( $actions, $post ) {
 
 
 
+/*
+	==========================================
+	Add :Favicon
+	==========================================
+*/
 
 
+// Add scripts to wp_head()
+function add_header() {
+    // Your PHP goes here
+    //begin my code contain
+    echo "\n";
+    echo '<link rel="shortcut icon" href="'.get_stylesheet_directory_uri().'/favicon.ico" type="image/x-icon" />';
 
 
-
-
-
-
+    //end my code contain
+    echo "\n";
+}
+add_action( 'wp_head', 'add_header' );
 
 
